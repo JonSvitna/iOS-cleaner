@@ -1,6 +1,6 @@
 # iOS Cleaner
 
-A native iOS application for optimizing iPhone storage by cleaning system files, detecting duplicates, and removing unnecessary cached data.
+A native iOS application for optimizing iPhone storage and performance through intelligent cleaning, monitoring, and optimization features with subscription-based continuous monitoring.
 
 ## Features
 
@@ -21,10 +21,36 @@ A native iOS application for optimizing iPhone storage by cleaning system files,
 - **Old Files Cleanup**: Remove files that haven't been accessed in a specified period
 - **Safe Operation**: Only removes hidden system files that won't damage iOS
 
+### ⚡ Performance Optimization (NEW)
+- **Real-time Performance Monitoring**: Track memory and storage usage
+- **Performance Modes**: 
+  - **Speed Mode**: Optimize for maximum performance
+  - **Battery Saver**: Minimize background activity to extend battery life
+  - **Gaming Mode**: Optimize for sustained gaming performance
+- **Smart Recommendations**: AI-powered optimization suggestions based on usage
+- **Performance Impact Analysis**: See how cleaning will improve device speed
+
+### 🔔 Background Monitoring (Premium)
+- **Continuous Monitoring**: Background performance checks on schedule
+- **Automatic Notifications**: Get alerted when optimization is needed
+- **Usage Trends**: Track performance metrics over time
+- **Historical Data**: View last 30 performance snapshots
+
+### 🔐 Permission Management
+- **Transparent Permissions**: Clear explanations for each permission request
+- **Photo Library Access**: Optional permission for duplicate photo detection
+- **Settings Integration**: Easy access to system settings for permissions
+
+### 💎 Subscription Tiers
+- **Free**: Basic cleaning and storage analysis
+- **Basic ($2.99/month)**: Background monitoring + performance modes + photo library scanning
+- **Premium ($4.99/month)**: All features + gaming mode + daily monitoring + advanced analytics
+
 ### 📊 Visual Interface
 - Modern SwiftUI interface
 - Real-time progress updates
 - Detailed storage breakdown
+- Performance dashboard
 - Clear visualization of potential savings
 
 ## Architecture
@@ -48,6 +74,29 @@ The app is built with a modular architecture using Swift and SwiftUI:
    - Cleans temporary files
    - Removes cached data
    - Cleans old, unused files
+
+4. **PerformanceManager** (`PerformanceManager.swift`) *NEW*
+   - Real-time memory and storage monitoring
+   - Performance mode management (Speed, Battery Saver, Gaming)
+   - Optimization recommendations engine
+   - Performance impact estimation
+
+5. **BackgroundMonitor** (`BackgroundMonitor.swift`) *NEW*
+   - Scheduled background performance checks
+   - Integration with iOS BackgroundTasks framework
+   - Metrics history tracking
+   - Notification system for critical issues
+
+6. **PermissionManager** (`PermissionManager.swift`) *NEW*
+   - Photo library permission handling
+   - Permission status tracking
+   - User-friendly permission requests
+
+7. **SubscriptionManager** (`SubscriptionManager.swift`) *NEW*
+   - Three-tier subscription model
+   - StoreKit 2 integration
+   - Feature gating and access control
+   - Purchase and restoration handling
    - Provides detailed cleaning results
 
 4. **iOSCleaner** (`iOSCleaner.swift`)
@@ -110,11 +159,15 @@ The project includes comprehensive unit tests:
 swift test
 ```
 
-Test coverage includes:
+Test coverage includes (35 tests total):
 - Storage analysis functionality
 - Duplicate detection algorithms
 - Cache cleaning operations
 - File removal safety
+- Performance monitoring and metrics
+- Background monitoring operations
+- Permission management
+- Subscription tier management
 
 ## Safety Features
 
@@ -138,15 +191,30 @@ Due to iOS sandboxing:
 - Limited to user-accessible documents, caches, and temporary files
 - Cannot modify iOS system directories (by design for security)
 
-## Future Enhancements
+## Roadmap
 
-Potential improvements:
-- Photo library duplicate detection (with user permission)
+See [ROADMAP.md](ROADMAP.md) for detailed development plan and timeline.
+
+### Phase 1 - Complete ✅
+- Permission management system
+- Performance monitoring with real-time metrics
+- Performance modes (Speed, Battery Saver, Gaming)
+- Background monitoring framework
+- Subscription management (3-tier model)
+- UI components for all new features
+
+### Phase 2 - In Progress 🔄
+- Photo library duplicate detection
 - Large file identification
-- Storage usage trends over time
-- Scheduled automatic cleaning
-- Export cleaning reports
-- More granular cache control
+- Enhanced file categorization
+- Background task production integration
+
+### Future Enhancements
+- AI-powered optimization recommendations
+- Cloud sync for settings
+- Home screen widgets
+- Siri shortcuts integration
+- Apple Watch companion app
 
 ## License
 

@@ -4,6 +4,7 @@ import SwiftUI
 @available(iOS 15.0, *)
 public struct ContentView: View {
     @StateObject private var viewModel = CleanerViewModel()
+    @State private var showPermissionRequest = false
     
     public init() {}
     
@@ -42,6 +43,32 @@ public struct ContentView: View {
                         }
                     }
                     
+                    // Performance & Subscription Section
+                    VStack(spacing: 12) {
+                        Text("Performance & Premium")
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal)
+                        
+                        NavigationLink(destination: PerformanceDashboardView()) {
+                            ActionCard(
+                                title: "Performance Monitor",
+                                subtitle: "Optimize device performance",
+                                icon: "speedometer",
+                                color: .green
+                            )
+                        }
+                        
+                        NavigationLink(destination: SubscriptionView()) {
+                            ActionCard(
+                                title: "Subscription",
+                                subtitle: "Unlock premium features",
+                                icon: "crown.fill",
+                                color: .purple
+                            )
+                        }
+                    }
+                    
                     // Status Messages
                     if let message = viewModel.statusMessage {
                         Text(message)
@@ -53,6 +80,18 @@ public struct ContentView: View {
                 .padding()
             }
             .navigationTitle("iOS Cleaner")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showPermissionRequest = true
+                    }) {
+                        Image(systemName: "lock.shield")
+                    }
+                }
+            }
+            .sheet(isPresented: $showPermissionRequest) {
+                PermissionRequestView()
+            }
             .onAppear {
                 viewModel.analyzeStorage()
             }
