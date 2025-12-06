@@ -23,7 +23,16 @@ let package = Package(
             dependencies: [],
             path: "Sources/iOSCleaner",
             exclude: ["Views", "App"],
-            sources: ["StorageAnalyzer.swift", "DuplicateDetector.swift", "CacheCleaner.swift", "iOSCleaner.swift"]),
+            sources: [
+                "StorageAnalyzer.swift",
+                "DuplicateDetector.swift",
+                "CacheCleaner.swift",
+                "iOSCleaner.swift",
+                "PermissionManager.swift",
+                "PerformanceManager.swift",
+                "BackgroundMonitor.swift",
+                "SubscriptionManager.swift"
+            ]),
         .testTarget(
             name: "iOSCleanerTests",
             dependencies: ["iOSCleanerCore"]),
