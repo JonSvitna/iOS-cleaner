@@ -80,7 +80,7 @@ public struct PerformanceDashboardView: View {
 
 @available(iOS 15.0, *)
 struct PerformanceModeSelector: View {
-    @ObservedObject var performanceManager: PerformanceManager
+    let performanceManager: PerformanceManager
     @State private var selectedMode: PerformanceManager.PerformanceMode
     
     init(performanceManager: PerformanceManager) {

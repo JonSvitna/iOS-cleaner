@@ -8,7 +8,7 @@ import StoreKit
 public class SubscriptionManager {
     
     /// Subscription tier levels
-    public enum SubscriptionTier: String, CaseIterable {
+    public enum SubscriptionTier: String, CaseIterable, Hashable {
         case free = "Free"
         case basic = "Basic"
         case premium = "Premium"

@@ -1,4 +1,7 @@
 import Foundation
+#if os(iOS) || os(macOS)
+import Darwin
+#endif
 
 /// Manages device performance monitoring and optimization
 @available(iOS 15.0, *)
